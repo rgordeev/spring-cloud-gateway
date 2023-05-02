@@ -1,0 +1,17 @@
+buildscript { repositories { mavenCentral() } }
+plugins {
+    id "idea"
+    id "com.github.node-gradle.node" version "3.4.0" apply false
+}
+
+wrapper {
+    gradleVersion = "7.6.1"
+}
+
+allprojects {
+    group 'ru.rgordeev'
+    version "${projectVersion}"
+}
+
+defaultTasks "clean", "build"
+

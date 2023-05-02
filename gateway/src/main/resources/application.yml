@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+      - id: book-store
+        uri: lb://book-store
+        predicates:
+        - Path=/api/books/**
+        filters:
+        - RewritePath=/api/(?<books>.*), /$\{books}
+
+server:
+  port: 8887
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka
+  instance:
+    preferIpAddress: true
